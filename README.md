@@ -1,4 +1,5 @@
 # Human Resource Modular
+> Projeto de estudo usando spring boot com angular em multi modulos separandos por camada de negocios, segurança e visão;
 
 ## Tecnologias
 
