@@ -1,0 +1,42 @@
+<aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="treeview" *ngIf="shared.employees.profiles == 'ADMIN'">  
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Employees</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">                   
+            <li><a [routerLink]="['/employees-list']"><i class="fa fa-circle-o"></i> List</a></li>
+            <li><a [routerLink]="['/employees-new']"><i class="fa fa-circle-o"></i> New</a></li>
+          </ul>
+        </li>
+        <li class="treeview" *ngIf="shared.employees.profiles == 'ADMIN'">
+            <a href="#">
+              <i class="fa fa-edit"></i> <span>Job</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a [routerLink]="['/job-list']"><i class="fa fa-circle-o"></i> List</a></li>
+              <li><a [routerLink]="['/job-new']"><i class="fa fa-circle-o"></i>  New</a></li>
+            </ul>
+          </li>
+          <li class="treeview" *ngIf="shared.employees.profiles == 'ADMIN'">
+              <a href="#">
+                <i class="fa fa-edit"></i> <span>Departaments</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a [routerLink]="['/departament-list']"><i class="fa fa-circle-o"></i> List</a></li>
+                  <li><a [routerLink]="['/departament-new']"><i class="fa fa-circle-o"></i> New</a></li>
+              </ul>
+          </li>
+      </ul>
+    </section>
+  </aside>

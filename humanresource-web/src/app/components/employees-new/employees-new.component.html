@@ -1,0 +1,111 @@
+<div class="col-md-10" style="margin-left:0%; margin-top: 1%">
+    <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">New Employees</h3>
+        </div>
+        <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+          <div [ngClass]="classCss" role="alert" *ngIf="message">
+              <strong>{{ message.text }}</strong>
+          </div>
+          <div class="box-body">
+            <div [ngClass]="getFormGroupClass(name.invalid,name.dirty)">
+              <label for="inputName" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text"
+                        [(ngModel)]="employees.name"
+                        name="name"
+                        class="form-control"
+                        id="inputName"
+                        #name="ngModel"
+                        placeholder="Name"
+                        required>
+                <span class="help-block" *ngIf="name.invalid && name.dirty">Name is required</span>       
+              </div>
+            </div>
+             <div [ngClass]="getFormGroupClass(email.invalid,email.dirty)">
+                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email"
+                         [(ngModel)]="employees.email"
+                         name="email"
+                         class="form-control"
+                         id="inputEmail"
+                         #email="ngModel"
+                         placeholder="Email"
+                         email>
+                  <span class="help-block" *ngIf="email.invalid && email.dirty">Email is invalid</span>       
+                </div>
+              </div>
+              <div [ngClass]="getFormGroupClass(password.invalid,password.dirty)">
+                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password"
+                          [(ngModel)]="employees.password"
+                          name="password"
+                          class="form-control"
+                          id="inputPassword"
+                          #password="ngModel"
+                          placeholder="Password"
+                          required>
+                  <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>       
+                </div>
+              </div>    
+            <div [ngClass]="getFormGroupClass(departament.invalid,departament.dirty)">
+              <label for="inputDepartament" class="col-sm-2 control-label">Select Departament</label>
+              <div class="col-sm-10">
+                <select [(ngModel)]="employees.departament"       
+                      class="form-control select2"
+                      name="departament"
+                      id="inputDepartament"
+                      #departament="ngModel"
+                      style="width: 100%"
+                      required>
+                      <option *ngFor="let departament of listDepartament" [ngValue]="departament">{{departament.name}}</option>                      
+                </select>       
+                <span class="help-block" *ngIf="departament.invalid && departament.dirty">Departament is required</span>       
+              </div>
+           </div>
+           <div [ngClass]="getFormGroupClass(job.invalid,job.dirty)">
+              <label for="inputJob" class="col-sm-2 control-label">Select Job</label>
+              <div class="col-sm-10">
+                <select [(ngModel)]="employees.job"       
+                      class="form-control select2"
+                      name="job"
+                      id="inputJob"
+                      #job="ngModel"
+                      style="width: 100%"
+                      required>
+                      <option *ngFor="let job of listJobs" [ngValue]="job">{{job.name}}</option>                      
+                </select>       
+                <span class="help-block" *ngIf="job.invalid && job.dirty">Job is required</span>       
+              </div>
+           </div>
+           <div class="form-group" *ngIf="shared.employees.profiles == 'ADMIN'">
+              <label for="inputProfiles" class="col-sm-2 control-label">Profile</label>
+              <div class="col-sm-10">
+                <select [(ngModel)]="employees.profiles"       
+                       class="form-control select2"
+                       name="profiles"
+                       id="inputProfiles"
+                       #profiles="ngModel"
+                       style="width: 100%">
+                       <option>ROLE_ADMIN</option>
+                       <option>ROLE_CUSTOMER</option>
+                </select>              
+              </div>
+            </div>
+          <div class="form-group">
+            <label for="inputImage" class="col-sm-2 control-label">Image</label>
+            <div class="col-sm-10">
+              <img [src]="employees.image" width="50%" height="50%">
+              <input type="file" id="image" (change)="onFileChange($event)">
+            </div>
+          </div>
+          <div class="box-footer">
+              <button type="submit" (click)="redirectLogin()" class="btn btn-warning">Return</button>          
+            <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Submit</button>
+          </div>
+        </div>  
+      </form>
+    </div>
+ </div>
